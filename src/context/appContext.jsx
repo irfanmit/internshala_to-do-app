@@ -2,6 +2,8 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 const appContext = createContext();
 
+// Using local storage to store items
+
 const getLocalStorage = () => {
     let task = localStorage.getItem('task');
     if (task) {
@@ -47,6 +49,21 @@ const AppProvider = ({ children }) => {
           })
         );
       };
+      const removeItem = (id) => {
+        if (id) {
+          // showAlert(true, 'Deleted Successfully!', 'warning');
+          setTasks(tasks.filter((item) => item.id !== id));
+        }
+        // setIsModalOpen(false);
+        // setDeleteId(null);
+      };
+      const removeAllItems = () => {
+        // if (allSelected) {
+          setTasks([]);
+          // setIsModalOpen(false);
+        // }
+      };
+
     useEffect(() => {
         localStorage.setItem('task', JSON.stringify(tasks));
     }, [tasks]);
@@ -63,6 +80,9 @@ const AppProvider = ({ children }) => {
                 completeHandler,
                 setAlert,
                 showAlert,
+                removeItem,
+                removeAllItems,
+
             }}
         >
             {children}

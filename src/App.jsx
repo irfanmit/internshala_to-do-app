@@ -1,28 +1,25 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { BsPencil } from 'react-icons/bs';
 import './App.css';
 import Filter from './components/Filter';
+import Logo from './assets/logo.png'
 
-// 
+//Components
 import TodoList from './components/ToDo';
 import { useGlobalContext } from './context/appContext';
-import Alert from './components/Alert';
 
 
-// 
+
 function App() {
   const [text, setText] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditId] = useState(null);
-  const editRef = useRef();
 
-  const { tasks, setTasks, filterdTasks, alert, setAlert, showAlert} = useGlobalContext();
+  const { tasks, setTasks, filterdTasks} = useGlobalContext();
 
   const handleAddItems = (e) => {
     e.preventDefault();
     if (!text) {
-      // if input is empty
-      // showAlert(true, 'Field is required!', 'danger');
     } else if (text && isEditing) {
       // Update the item & states
       const updatedTasks = tasks.map((item) => {
@@ -42,8 +39,6 @@ function App() {
       setEditId(null);
       setIsEditing(false);
 
-      // Update item alert
-      // setAlert({ show: true, msg: 'Updated Successfully!', type: 'success' });
     } else {
       // Add item
       const newTask = {
@@ -66,11 +61,25 @@ function App() {
 
 
   return (
+    <>
+        
+      <nav className="navbar">
+        <div className="navbar-left">
+          <span className="app-title">To-do App</span>
+        </div>
+        <div className="navbar-right">
+          <span className="github-username">
+            Faisal Irfan <br></br> Email : faisalirfan2502@gmail.com 
+          </span>
+        </div>
+      </nav>
+   
     <div className="center-box">
       <div className="header">
-        <div className="icon">Icon</div>
+      <div className="wa__logo-area">
+            <img alt="to do list" src={Logo} width="40%" />
+          </div>
         
-      {/* setAlert({ show: true, msg: 'Updated Successfully!', type: 'success' }); */}
         <div className="filter-button">
           <Filter/>
         </div>
@@ -98,6 +107,7 @@ function App() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

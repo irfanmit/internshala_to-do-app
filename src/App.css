@@ -1,15 +1,121 @@
-/* Center the box in the middle of the page */
+
+body{
+  
+  background-image: url('assets/toDoBg.jpg');
+}
+
+/* NAVBAR */
+
+/* Navbar.css */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navbar-left {
+  text-align: left;
+}
+
+.app-title {
+  margin-right: 20px;
+}
+
+.navbar-right {
+  text-align: right;
+}
+
+.github-username a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.github-username a:hover {
+  text-decoration: underline;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* MODAL OVERLAY */
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; 
+}
+
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.modal h2 {
+  margin: 0;
+}
+
+.modal-actions {
+  margin-top: 20px;
+}
+
+.modal-actions button {
+  background: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.modal-actions button:hover {
+  background: #0056b3;
+}
+
+
+
+
+/* TO DO APP MAIN BODY */
+
+
 .center-box {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90%; /* Increase the width of the box to 90% */
-  max-width: 500px; /* Set a maximum width for the box */
-  background-color: #f2f2f2; /* Background color of the box */
-  border: 1px solid #ccc; /* Border for the box */
-  padding: 20px; /* Padding inside the box */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  width: 90%;
+  max-width: 500px;
+  background-color: #505050;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect for the center-box */
+.center-box:hover {
+  transform: translate(-50%, -50%) scale(1.02);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
 }
 
 /* Header section with icon and filter button */
@@ -20,28 +126,35 @@
   margin-bottom: 20px;
 }
 
-/* Icon style (replace with your icon) */
+
 .icon {
   font-size: 24px;
-  color: #007bff; /* Icon color */
+  color: #007bff;
 }
 
-/* Filter button style */
+
 .filter-button {
-  background-color: #007bff; /* Button background color */
-  color: #fff; /* Button text color */
+  background-color: #007bff;
+  color: #fff;
   padding: 8px 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
+
+  /* Hover effect */
+  &:hover {
+    background-color: #0056b3;
+  }
 }
 
 /* White board */
 .white-board {
-  background-color: #fff; /* Background color of the white board */
+  background-color: #fff;
   padding: 20px;
-  border: 1px solid #ccc; /* Border for the white board */
-  min-height: 400px; /* Increase the minimum height of the white board */
+  border: 1px solid #ccc;
+  min-height: 400px;
+  border-radius: 10px;
 }
 
 /* Input field and add button */
@@ -49,7 +162,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px; /* Add some space between white board and input */
+  margin-top: 20px;
 }
 
 /* Input field style */
@@ -62,12 +175,21 @@
 
 /* Add button style */
 .add-button {
-  background-color: #007bff; /* Button background color */
-  color: #fff; /* Button text color */
+  background-color: #007bff;
+  color: #fff;
   padding: 8px 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+
+  /* Hover effect */
+  &:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  }
 }
 
 
@@ -109,6 +231,7 @@
 }
 
 .wa__table-header {
+  color: white;
   position: sticky;
   top: 0;
   z-index: 9;
@@ -172,18 +295,34 @@ button.wa__action-btn {
 
 .wa__complete-btn {
   background: var(--clr-primary);
+  
+  transition: transform 0.2s;
 }
+.wa__complete-btn:hover {
+  transform: scale(1.5); 
+}
+
 
 .wa__complete-btn.wa__task-completed {
   background: var(--clr-complete);
 }
 
+
 .wa__update-btn {
   background: var(--clr-update);
+  transition: transform 0.2s;
+}
+
+.wa__update-btn:hover {
+  transform: scale(1.5); 
 }
 
 .wa__delete-btn {
   background: var(--clr-delete);
+  transition: transform 0.2s;
+}
+.wa__delete-btn:hover {
+  transform: scale(1.5); 
 }
 
 .wa__form-group {
@@ -198,4 +337,23 @@ button.wa__action-btn {
   padding: 8px 20px;
   border-radius: 50px;
 }
+.wa__delete-all:hover{
+  background-color: purple;
+  color: white;
+}
+
 /*  */
+@media (max-width: 768px) {
+  .wa__list-area {
+    height: auto; 
+    max-height: 400px; 
+  }
+
+  .center-box {
+    top: 70%;
+  }
+
+  .app-container {
+    margin-top: 80px; 
+  }
+}

@@ -1,12 +1,20 @@
-// All necessary dependences
+import React, { useState } from 'react';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { BsCheckAll, BsPencilSquare, BsTrash } from 'react-icons/bs';
 import { useGlobalContext } from '../context/appContext';
 import { formatDate } from '../helper/dateFormater';
 
-// ToDoList
 const TodoList = ({ filterdTasks, editHandler }) => {
-  const { completeHandler } = useGlobalContext();
+  const { completeHandler, removeItem, removeAllItems } = useGlobalContext();
+  const [isDeleteAllModalOpen, setIsDeleteAllModalOpen] = useState(false);
+
+  const openDeleteAllModal = () => {
+    setIsDeleteAllModalOpen(true);
+  };
+
+  const closeDeleteAllModal = () => {
+    setIsDeleteAllModalOpen(false);
+  };
 
   return (
     <>
@@ -68,8 +76,7 @@ const TodoList = ({ filterdTasks, editHandler }) => {
                       className="wa__btn wa__action-btn wa__delete-btn"
                       title="Delete"
                       onClick={() => {
-                        // setIsModalOpen(true);
-                        // setDeleteId(id);
+                        removeItem(id);
                       }}
                     >
                       <BsTrash />
@@ -84,13 +91,7 @@ const TodoList = ({ filterdTasks, editHandler }) => {
           <tfoot>
             <tr>
               <td colSpan={5}>
-                <button
-                  className="wa__btn wa__delete-all"
-                  onClick={() => {
-                    // setAllSelected(true);
-                    // setIsModalOpen(true);
-                  }}
-                >
+                <button className="wa__btn wa__delete-all" onClick={openDeleteAllModal}>
                   Delete All
                 </button>
               </td>
@@ -98,6 +99,27 @@ const TodoList = ({ filterdTasks, editHandler }) => {
           </tfoot>
         )}
       </table>
+
+      {isDeleteAllModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>Confirm Deletion</h2>
+            <p>Are you sure you want to delete all items?</p>
+            <div className="modal-actions">
+              <button
+                onClick={() => {
+                  removeAllItems();
+                  closeDeleteAllModal();
+                }}
+              >
+                Yes
+              </button>
+              <button onClick={closeDeleteAllModal}>No</button>
+            </div>
+          </div>
+        </div>
+      )}
+      
     </>
   );
 };
