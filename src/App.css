@@ -1,38 +1,201 @@
-.App {
+/* Center the box in the middle of the page */
+.center-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%; /* Increase the width of the box to 90% */
+  max-width: 500px; /* Set a maximum width for the box */
+  background-color: #f2f2f2; /* Background color of the box */
+  border: 1px solid #ccc; /* Border for the box */
+  padding: 20px; /* Padding inside the box */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+/* Header section with icon and filter button */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Icon style (replace with your icon) */
+.icon {
+  font-size: 24px;
+  color: #007bff; /* Icon color */
+}
+
+/* Filter button style */
+.filter-button {
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* White board */
+.white-board {
+  background-color: #fff; /* Background color of the white board */
+  padding: 20px;
+  border: 1px solid #ccc; /* Border for the white board */
+  min-height: 400px; /* Increase the minimum height of the white board */
+}
+
+/* Input field and add button */
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px; /* Add some space between white board and input */
+}
+
+/* Input field style */
+.input-field {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Add button style */
+.add-button {
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/* ITEM TABLE */
+.wa__list-area {
+  border-collapse: collapse;
+  width: 100%;
+  display: block;
+  height: calc(100vh - 358px);
+  overflow: auto;
+}
+
+.wa__list-area::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.wa__list-area::-webkit-scrollbar-thumb {
+  background: #d8d8d8;
+  border-radius: 30px;
+}
+
+.wa__list-area::-webkit-scrollbar-thumb:hover {
+  background: #a2a2a2;
+  visibility: visible;
+}
+
+.wa__list-area td,
+.wa__list-area th {
+  padding: 5px 15px;
+}
+
+.wa__list-area tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.wa__list-area tbody tr:hover {
+  background-color: #ddd;
+}
+
+.wa__table-header {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
+
+.wa__date {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.wa__list-area tfoot {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+p.wa__item.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+span.status {
+  padding: 3px 10px;
+  color: var(--clr-light);
+  font-size: 12px;
+  border-radius: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+span.status.active {
+  background: var(--clr-active);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+span.status.completed {
+  background: var(--clr-complete);
+  text-decoration: unset !important;
+  opacity: 1;
+}
+
+.wa__list-area th {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: left;
+  background-color: #010326;
+  color: var(--clr-light);
+}
+
+button.wa__action-btn {
+  padding: 6px;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  color: var(--clr-light);
 }
 
-.App-link {
-  color: #61dafb;
+.wa__action {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.wa__complete-btn {
+  background: var(--clr-primary);
 }
+
+.wa__complete-btn.wa__task-completed {
+  background: var(--clr-complete);
+}
+
+.wa__update-btn {
+  background: var(--clr-update);
+}
+
+.wa__delete-btn {
+  background: var(--clr-delete);
+}
+
+.wa__form-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.wa__delete-all {
+  background: var(--clr-delete);
+  color: var(--clr-light);
+  padding: 8px 20px;
+  border-radius: 50px;
+}
+/*  */
