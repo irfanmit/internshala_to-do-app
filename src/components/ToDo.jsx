@@ -100,6 +100,8 @@ const TodoList = ({ filterdTasks, editHandler }) => {
         )}
       </table>
 
+      {/* MODAL TO CONFIRM ALL DELETION */}
+
       {isDeleteAllModalOpen && (
         <div className="modal-overlay">
           <div className="modal">
